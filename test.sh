@@ -188,7 +188,7 @@ function runQueries2 {
   #echo "Rust Code-----------------------------------------------------" >> $resultFile
   outFile=TestData/${numDiscrete}_${numContinuous}_${numRows}.fwf2.rust.tmp
   #echo -e "SelectColumns\t$numDiscrete\t$numContinuous\t$numRows\t$( { /usr/bin/time -f %e ./TestFixedWidth2_rust $llFile $dataFile $ccFile $outFile $mcclFile $colNamesFile $numRows MMAP > /dev/null; } 2>&1 )" >> $resultFile
-  /TestFixedWidth2_rust $llFile $dataFile $ccFile $outFile $mcclFile $colNamesFile $numRows
+  /target/debug/TestFixedWidth2_rust $llFile $dataFile $ccFile $outFile $mcclFile $colNamesFile $numRows
   #python3 CheckOutput.py $outFile $masterOutFile
 
   rm -f $outFile

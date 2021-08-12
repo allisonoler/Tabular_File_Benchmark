@@ -12,3 +12,5 @@ zstd-dev
 *.tbi
 F4
 Temp_*
+target
+.idea

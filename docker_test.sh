@@ -15,7 +15,8 @@ cp Environment/Dockerfile $tmpDir/
 cp Environment/build_docker $tmpDir/
 cp test.sh $tmpDir/
 cp *.py $tmpDir/
-cp *.rs $tmpDir/
+cp *.toml $tmpDir/
+cp -r src $tmpDir/
 cp *.R $tmpDir/
 cp *.cpp $tmpDir/
 
