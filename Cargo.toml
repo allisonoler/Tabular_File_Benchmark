@@ -5,3 +5,11 @@ edition = "2018"
 
 [dependencies]
 memmap2 = "0.3.0"
+
+[[bin]]
+name = "TestFixedWidth2_rust"
+path = "src/test_fixed_width_2.rs"
+
+[[bin]]
+name = "TestFixedWidth3_rust"
+path = "src/test_fixed_width_3.rs"
