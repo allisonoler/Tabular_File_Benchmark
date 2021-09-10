@@ -189,7 +189,6 @@ function runQueries2 {
   outFile=TestData/${numDiscrete}_${numContinuous}_${numRows}.fwf2.rust.tmp
   #echo -e "SelectColumns\t$numDiscrete\t$numContinuous\t$numRows\t$( { /usr/bin/time -f %e ./TestFixedWidth2_rust $llFile $dataFile $ccFile $outFile $mcclFile $colNamesFile $numRows MMAP > /dev/null; } 2>&1 )" >> $resultFile
   time /target/release/TestFixedWidth2_rust $llFile $dataFile $ccFile $outFile $mcclFile $colNamesFile $numRows
-  /target/release/TestFixedWidth3_rust
   #python3 CheckOutput.py $outFile $masterOutFile
 
   rm -f $outFile
@@ -202,7 +201,6 @@ runQueries2 $resultFile 10 90 1000
 #runQueries2 $resultFile 100 900 1000000
 #runQueries2 $resultFile 100000 900000 1000
 echo "got here!"
-exit
 
 function getMemUsed {
   resultFile=$1
