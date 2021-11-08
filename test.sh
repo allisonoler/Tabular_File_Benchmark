@@ -343,19 +343,19 @@ function compressLines {
 resultFile=Results2/Line_Compression_Times.tsv
 #echo -e "File\tMethod\tLevel\tSeconds" > $resultFile
 
-#for f in TestData/10_*.fwf2
-#do
+for f in TestData/10_*.fwf2
+do
 #  compressLines $resultFile $f 1000 bz2 1
 #  compressLines $resultFile $f 1000 bz2 9
 #  compressLines $resultFile $f 1000 gz 1
 #  compressLines $resultFile $f 1000 gz 9
 #  compressLines $resultFile $f 1000 lzma NA
 #  compressLines $resultFile $f 1000 snappy NA
-#  compressLines $resultFile $f 1000 zstd 1
+  compressLines $resultFile $f 1000 zstd 1
 #  compressLines $resultFile $f 1000 zstd 22
 #  compressLines $resultFile $f 1000 lz4 0
 #  compressLines $resultFile $f 1000 lz4 16
-#done
+done
 
 #for f in TestData/100_*.fwf2
 #do
@@ -538,22 +538,22 @@ function runAllQueries4 {
   numContinuous=$3
   numRows=$4
 
-  runQueries4 $resultFile $numDiscrete $numContinuous $numRows bz2 1 bz2_1
-  runQueries4 $resultFile $numDiscrete $numContinuous $numRows bz2 9 bz2_9
-  runQueries4 $resultFile $numDiscrete $numContinuous $numRows gz 1 gz_1
-  runQueries4 $resultFile $numDiscrete $numContinuous $numRows gz 9 gz_9
-  runQueries4 $resultFile $numDiscrete $numContinuous $numRows lzma NA lzma
-  runQueries4 $resultFile $numDiscrete $numContinuous $numRows snappy NA snappy
+#  runQueries4 $resultFile $numDiscrete $numContinuous $numRows bz2 1 bz2_1
+#  runQueries4 $resultFile $numDiscrete $numContinuous $numRows bz2 9 bz2_9
+#  runQueries4 $resultFile $numDiscrete $numContinuous $numRows gz 1 gz_1
+#  runQueries4 $resultFile $numDiscrete $numContinuous $numRows gz 9 gz_9
+#  runQueries4 $resultFile $numDiscrete $numContinuous $numRows lzma NA lzma
+#  runQueries4 $resultFile $numDiscrete $numContinuous $numRows snappy NA snappy
   runQueries4 $resultFile $numDiscrete $numContinuous $numRows zstd 1 zstd_1
-  runQueries4 $resultFile $numDiscrete $numContinuous $numRows zstd 22 zstd_22
-  runQueries4 $resultFile $numDiscrete $numContinuous $numRows lz4 0 lz4_0
-  runQueries4 $resultFile $numDiscrete $numContinuous $numRows lz4 16 lz4_16
+#  runQueries4 $resultFile $numDiscrete $numContinuous $numRows zstd 22 zstd_22
+#  runQueries4 $resultFile $numDiscrete $numContinuous $numRows lz4 0 lz4_0
+#  runQueries4 $resultFile $numDiscrete $numContinuous $numRows lz4 16 lz4_16
 }
 
 resultFile=Results2/Query_Results_fwf2_compressed.tsv
 echo -e "Method\tLevel\tNumDiscrete\tNumContinuous\tNumRows\tSeconds" > $resultFile
 
-#runAllQueries4 $resultFile 10 90 1000
+runAllQueries4 $resultFile 10 90 1000
 #runAllQueries4 $resultFile 100 900 1000000
 #runAllQueries4 $resultFile 100000 900000 1000
 
