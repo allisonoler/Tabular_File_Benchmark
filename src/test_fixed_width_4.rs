@@ -105,8 +105,7 @@ fn get_col_indices_to_query(column_names_file_path: &str) -> Vec<usize> {
 
 fn parse_row(row_coord_0: &Vec<usize>, file_handles: &HashMap<String, Mmap>) -> Vec<u8> {
     let result =  &file_handles["data"][row_coord_0[1] as usize..row_coord_0[2] as usize];
-    let max_decompressed_size: usize = (row_coord_0[2] as usize - row_coord_0[1] as usize + 1) * 100;
-    let decompressed_vector: Vec<u8> = zstd::block::decompress(&result, max_decompressed_size).unwrap();
+    let decompressed_vector = zstd::stream::decode_all(result).unwrap();
     return decompressed_vector;
 }
 

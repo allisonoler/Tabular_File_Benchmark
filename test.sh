@@ -596,10 +596,10 @@ function transposeCompressTestFile {
 sizeFile=Results2/File_Sizes_transposed.tsv
 #echo -e "Description\tNumDiscrete\tNumContinuous\tNumRows\tSize" > $sizeFile
 
-#transposeCompressTestFile $sizeFile 10 90 1000 100 &
+transposeCompressTestFile $sizeFile 10 90 1000 100 &
 #transposeCompressTestFile $sizeFile 100 900 1000000 1000 &
 #transposeCompressTestFile $sizeFile 100000 900000 1000 1000000 &
-#wait
+wait
 
 function runQuery4T {
   resultFile=$1
@@ -622,6 +622,7 @@ function runQuery4T {
   echo -e "Python-----" >> $resultFile
   echo -e "$compressionMethod\t$compressionLevel\t$numDiscrete\t$numContinuous\t$numRows\t$( { /usr/bin/time -f %e python3 TestFixedWidth4T.py $dataFile $transposedFile $colNamesFile $outFile $numDiscrete,$numDataPoints $compressionMethod $compressionLevel > /dev/null; } 2>&1 )" >> $resultFile
   #python3 TestFixedWidth4T.py $dataFile $transposedFile $colNamesFile $outFile $numDiscrete,$numDataPoints $compressionMethod $compressionLevel
+  time /target/release/TestFixedWidth4T_rust $dataFile $transposedFile $colNamesFile $outFile $numDiscrete,$numDataPoints $compressionMethod $compressionLevel
   python3 CheckOutput.py $outFile $masterOutFile
 
   rm -f $outFile
@@ -640,7 +641,7 @@ function runQuery4T {
 resultFile=Results2/Query_Results_fwf2_compressed_transposed.tsv
 echo -e "Method\tLevel\tNumDiscrete\tNumContinuous\tNumRows\tSeconds" > $resultFile
 
-#runQuery4T $resultFile 10 90 1000 zstd 1 zstd_1
+runQuery4T $resultFile 10 90 1000 zstd 1 zstd_1
 ##TODO: The following test is failing with this error:
 ##        zstd.ZstdError: decompression error: did not decompress full frame
 ##runQuery4T $resultFile 10 90 1000 zstd 22 zstd_22

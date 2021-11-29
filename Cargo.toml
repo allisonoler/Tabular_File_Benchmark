@@ -18,3 +18,7 @@ path = "src/test_fixed_width_3.rs"
 [[bin]]
 name = "TestFixedWidth4_rust"
 path = "src/test_fixed_width_4.rs"
+
+[[bin]]
+name = "TestFixedWidth4T_rust"
+path = "src/test_fixed_width_4T.rs"
